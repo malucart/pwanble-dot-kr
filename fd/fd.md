@@ -2,7 +2,7 @@
 
 First at all, let's know what file descriptor, ssh command and cat command mean. 
 
-<p><strong>File descriptor</strong> is a number which the computer understands as a open file. Also, this file is a unique number no-negative. File descriptor is used by modern operating systems: Linux, macOS X and BSD. In Microsoft Windows, it's called file handle.</p>
+<p><strong>File descriptor</strong> is a number which the computer understands as a open file. Also, this file is an unique number no-negative. File descriptor is used by modern operating systems: Linux, macOS X and BSD. In Microsoft Windows, it's called file handle.</p>
 
 <p><strong>ssh command</strong> is included on Linux and it's used to start the ssh client program that enables secure encrypted connection to the ssh server on a remote machine.</p>
 
