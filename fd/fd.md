@@ -1,6 +1,6 @@
 # fd
 
-First at all, let's know what file descriptor, ssh command and cat command means. 
+First at all, let's know what file descriptor, ssh command and cat command mean. 
 
 <p><strong>File descriptor</strong> is a number which the computer understands as a open file. Also, this file is a unique number no-negative. File descriptor is used by modern operating systems: Linux, macOS X and BSD. In Microsoft Windows, it's called file handle.</p>
 
