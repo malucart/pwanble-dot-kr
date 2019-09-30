@@ -48,7 +48,7 @@ fd@prowl:~$ ./fd
 pass argv[1] a number
 ```
 
-<p>I'm going ton choose 0x1234 in decimal, which is: 4660.</p>
+<p>I'm going to choose 0x1234 in decimal, which is: 4660.</p>
 
 ```
 fd@prowl:~$ ./fd 4660
