@@ -55,7 +55,7 @@ Aborted (core dumped)
 
 <p>There are several reasons that compilation is aborted, but in this case it may be because we are accessing an invalid memory address (unmapped memory).</p>
 
-<p>Then I write it:</p>
+<p>Then I write it (in below) to get the old version of gdb because I really want the stack overflow working here, and then I add my input:</p>
 
 ```
 gcc -m32 overflow.c -o overflow -fno-stack-protector
