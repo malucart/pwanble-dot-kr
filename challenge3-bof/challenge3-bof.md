@@ -167,7 +167,7 @@ End of assembler dump.
 
 <p>When we execute the CALL instruction to perform the function call, the instruction pointer (eip) of the next instruction will be stored in the stack. Then we change the address to the function address and execute the function. Also, we need to save the address in the stack to know where to go back.</p>
 
-<p>Now we know why the eip has the value 0x41414141,it's because we overwrite the return address on the stack when the function ends. It takes the address from the stack and puts it in the eip, so the processor will execute the instructions from this area, but it's an unmapped region, in other words, segmentation fault occurs.</p>
+<p>Now we know why the eip has the value 0x41414141 and it's because we overwrite the return address on the stack when the function ends. It takes the address from the stack and puts it in the eip, so the processor will execute the instructions from this area, but it's an unmapped region, in other words, segmentation fault occurs.</p>
 
 <p>We're going to explore more about it:</p>
 
