@@ -51,6 +51,8 @@ Try again.
 Aborted (core dumped)
 ```
 
+<p>There are several reasons that compilation is aborted, but in this case it may be because we are accessing an invalid memory address (unmapped memory).</p>
+
 <p>Then I write it:</p>
 ```
 gcc -m32 overflow.c -o overflow -fno-stack-protector
@@ -196,55 +198,3 @@ You shouldnt be here
 Program received signal SIGSEGV, Segmentation fault.
 0xffffd300 in ?? ()
 ``` 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>There are several reasons that compilation is aborted, but in this case it may be because we are accessing an invalid memory address (unmapped memory).</p>
-
-<p></p>
