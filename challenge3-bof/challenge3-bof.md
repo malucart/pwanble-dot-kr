@@ -196,7 +196,7 @@ Dump of assembler code for function secret:
 End of assembler dump.
 ``` 
 
-<p>The secret adress is <strong>0x5655557d +0</strong>. How I know this? Just because it is the first instruction on the function. In addition, if I do more tests like using AAAAAAAAAAAAAAAAAAAAAABBBB, the eip changes to 0x42424242. So after 22 bytes (22 times A) we have the saved value of the return function, so let's put 0x5655557d on it.</p>
+<p>The secret adress is <strong>0x5655557d +0</strong>. How I know this? Just because it is the first instruction in the function. In addition, if I do more tests like using AAAAAAAAAAAAAAAAAAAAAABBBB, the eip changes to 0x42424242. So after 22 bytes (22 times A) we have the saved value of the return function, so let's put 0x5655557d on it.</p>
 
 ```
 (gdb) run $(python -c 'print "A" * 22 + "\x7d\x55\x55\x56"')
