@@ -116,13 +116,13 @@ fs          0x0      0
 gs          0x63     99
 ```
 
-<p>If I  write it (in below) to get more info about the main function:</p>
+<p>Writing it to get more info about the main function:</p>
 
 ```
 (gdb) disas main
 ``` 
 
-<p>I have this result:</p>
+<p>I get this result:</p>
 
 ``` 
 Dump of assembler code for function main:
