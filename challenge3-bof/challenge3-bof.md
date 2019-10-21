@@ -172,7 +172,7 @@ End of assembler dump.
 <p>We're going to explore more about it:</p>
 
 ``` 
-disas secret
+(gdb) disas secret
 ``` 
 
 ``` 
