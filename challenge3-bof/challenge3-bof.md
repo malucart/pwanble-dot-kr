@@ -209,3 +209,32 @@ You shouldnt be here
 Program received signal SIGSEGV, Segmentation fault.
 0xffffd300 in ?? ()
 ``` 
+
+<p>As we can see, we got it! We can have access inside of a function that it's not called!</p>
+
+<p>Finally, I think that now we can move on and make the bof challenge.</p>
+<ul>
+    <li>http://pwnable.kr/bin/bof <em>(you can find this one in this folder)</em></li>
+    <li> http://pwnable.kr/bin/bof.c</li>
+</ul>
+
+``` 
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+void func(int key){
+	char overflowme[32];
+	printf("overflow me : ");
+	gets(overflowme);	// smash me!
+	if(key == 0xcafebabe){
+		system("/bin/sh");
+	}
+	else{
+		printf("Nah..\n");
+	}
+}
+int main(int argc, char* argv[]){
+	func(0xdeadbeef);
+	return 0;
+}
+``` 
