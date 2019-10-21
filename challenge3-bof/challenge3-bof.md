@@ -163,7 +163,7 @@ Dump of assembler code for function main:
 End of assembler dump.
 ``` 
 
-<p>As we see, the main funcion calls the function called "function" in +44.</p>
+<p>As we see, the main function calls the function called "function" in +44.</p>
 
 <p>When we execute the CALL instruction to perform the function call, the instruction pointer (eip) of the next instruction will be stored in the stack. Then we change the address to the function address and execute the function. Also, we need to save the address in the stack to know where to go back.</p>
 
