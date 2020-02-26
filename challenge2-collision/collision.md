@@ -53,7 +53,7 @@ int main(int argc, char* argv[]){
 }
 ```
 
-<p>Well, the code says I have to choose one password that have to follow this: </p>
+<p>Well, the code says I have to choose one password that it has to follow this: </p>
 
 ```
 0 - 255 (dec)
@@ -71,15 +71,15 @@ i = 3;
 i = 4;
 ```
 
-If I have ```01 01 01 01``` ```01 01 01 01``` ```01 01 01 01``` ```01 01 01 01``` ```01 01 01 01```.
+For example, If I have ```01 01 01 01``` ```01 01 01 01``` ```01 01 01 01``` ```01 01 01 01``` ```01 01 01 01```.
 
 Each i has 4 bytes, in other words, each i has ```01 01 01 01```.
 
-Now, following ```res```, I have to sum all of these i. And the final result have to be the same than ```hashcode = 0x21DD09EC```. However, 0x21DD09EC in decimal is 568134124, and it is not divisible by 5 because the result is 113626824.8. Let's use just 113626824 which in hex is 6C5CEC8. So, 113626824 * 4 is 454507296. If we do ```0x21DD09EC``` - 454507296, the result is 113626828 which in hex is 6C5CECC. 
+Now, following ```res```, I have to sum all of these i and the final result have to be the same than ```hashcode = 0x21DD09EC```. However, 0x21DD09EC in decimal is 568134124, and it is not divisible by 5 because the result is 113626824.8. Let's use just 113626824 which in hex is 6C5CEC8. So, 113626824 * 4 is 454507296. If we do ```0x21DD09EC``` - 454507296, the result is 113626828 which in hex is 6C5CECC. 
 
 Finally, we have 6C5CECC + 6C5CEC8 * 4 == ```0x21DD09EC```
 
-Let's find the flag using python to pass as an input, and we have to respect endiannes because the terminal understands this way.
+Let's find the flag using python to pass it as an input, and also we have to respect endiannes because the terminal understands this way.
 
 ```
 col@prowl:~$ ./col $(python -c 'print "\xCC\xCE\xC5\x06" + "\xC8\xCE\xC5\x06" * 4')
