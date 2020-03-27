@@ -53,7 +53,7 @@ int main(int argc, char* argv[]){
 }
 ```
 
-<p>Well, the code says I have to choose one password that it has to follow this: </p>
+<p>Well, the code says I have to choose one password which has to follow this: </p>
 
 ```
 0 - 255 (dec)
