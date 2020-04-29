@@ -6,7 +6,7 @@ First at all, let's know the meaning of file descriptor, ssh command and cat com
 
 <p><strong>ssh command</strong> is included on Linux and it's used to start the ssh client program that it enables secure encrypted connection to the ssh server on a remote machine.</p>
 
-<p><strong>cat command</strong> on Linux reads data from files and outputs their contents.</p>
+<p><strong>cat command</strong> reads data from files and outputs their contents on Linux.</p>
 
 ```
 :~$ ssh fd@pwnable.kr -p2222
