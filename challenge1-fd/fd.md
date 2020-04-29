@@ -51,7 +51,7 @@ pass argv[1] a number
 <p>Which number can I choose? I found that atoi() function is responsable to convert string to int. I also found that read() function
 is responsable to read bytes from a stdin with a file descriptor. As I know, stdin is represented as 0, stdout as 1 and stderr as 2.
 Consequently, int fd as 0 is perfect to let me write anything because the program will read it as a stdin in char buf[32].
-So, I will choose a number which minus 0x1234 is going to result in 0. This number is 4660, and then, I write LETMEWIN.</p>
+So, I will choose a number which minus 0x1234 is going to result in 0. This number is 0x1234 in decimal: 4660. And then, I write LETMEWIN.</p>
 
 ```
 fd@prowl:~$ ./fd 4660
