@@ -71,11 +71,9 @@ i = 3;
 i = 4;
 ```
 
-For example, If I have ```01 01 01 01``` ```01 01 01 01``` ```01 01 01 01``` ```01 01 01 01``` ```01 01 01 01```.
+For example, If I have ```01 01 01 01``` ```01 01 01 01``` ```01 01 01 01``` ```01 01 01 01``` ```01 01 01 01```, it means that each i has 4 bytes or  ```01 01 01 01```.
 
-Each i has 4 bytes, in other words, each i has ```01 01 01 01```.
-
-Now, following ```res```, I have to sum all of these i and the final result have to be the same than ```hashcode = 0x21DD09EC```. However, 0x21DD09EC in decimal is 568134124, and it is not divisible by 5 because the result is 113626824.8. Let's use just 113626824 which in hex is 6C5CEC8. So, 113626824 * 4 is 454507296. If we do ```0x21DD09EC``` - 454507296, the result is 113626828 which in hex is 6C5CECC. 
+Now, following ```res```, I have to sum all of these i and the final result have to be the same than ```hashcode = 0x21DD09EC```. However, 0x21DD09EC in decimal is 568134124, and it is not divisible by 5 because the result is 113626824.8. Let's use just 113626824 which in hex is 6C5CEC8. So, 113626824 * 4 is 454507296. If we do ```0x21DD09EC``` - 454507296, the result is 113626828 which in hex is 6C5CECC.
 
 Finally, we have 6C5CECC + 6C5CEC8 * 4 == ```0x21DD09EC```
 
